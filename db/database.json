@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "artcode": "PRD001",
+      "name": "Product 1",
+      "price": 120,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 2,
+      "artcode": "PRD002",
+      "name": "Product 2",
+      "price": 150,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 3,
+      "artcode": "PRD003",
+      "name": "Product 3",
+      "price": 180,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 4,
+      "artcode": "PRD004",
+      "name": "Product 4",
+      "price": 60,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 5,
+      "artcode": "PRD005",
+      "name": "Product 5",
+      "price": 760,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 6,
+      "artcode": "PRD006",
+      "name": "Product 6",
+      "price": 310,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 7,
+      "artcode": "PRD007",
+      "name": "Product 7",
+      "price": 220,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 8,
+      "artcode": "PRD008",
+      "name": "Product 8",
+      "price": 190,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 9,
+      "artcode": "PRD009",
+      "name": "Product 9",
+      "price": 49,
+      "img": "https://placeimg.com/640/480/any"
+    },
+    {
+      "id": 10,
+      "artcode": "PRD010",
+      "name": "Product 10",
+      "price": 129.99,
+      "img": "https://placeimg.com/640/480/any"
+    }
+  ],
+  "carts": [
+    {
+      "cart": "hK6CpEvE",
+      "content": [],
+      "cartTotal": 190
+    }
+  ]
+}

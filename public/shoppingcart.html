@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Exo+2|Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Myshop e-commerce</title>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <span>
+          <a href="/">My Shop</a>
+        </span>
+      </div>
+      <button id="menu-toggle">&#9776</button>
+      <nav>
+        <ul>
+          <li><a href="/whoweare.html">who we are</a></li>
+          <li><a href="/products.html">products</a></li>
+          <li class="active">
+            <a href="#">shopping cart</a>
+            <div id="cart-bullet-cont" class="hidden">
+              <span id="cart-bullet"></span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="sect-container-cart">
+        <h3>Shopping Cart</h3>
+        <section class="cart-content">
+          <section class="cart-line">
+            <article>
+              <img src="https://placeimg.com/320/240/any" alt="prod" />
+              <div>
+                <h4 class="cart-prod-name">Name</h4>
+                <p class="cart-prod-code">Code:</p>
+              </div>
+              <p class="cart-prod-price">Price:</p>
+            </article>
+            <button></button>
+          </section>
+
+          <section class="cart-line">
+            <div class="removing">
+              <img
+                style="display: inline-block;"
+                src="./images/blocks-1s-58px.gif"
+                alt=""
+                width="50px"
+                height="auto"
+              />
+              <p style="display: inline-block;">Removing...</p>
+            </div>
+            <article>
+              <img src="https://placeimg.com/640/480/any" alt="prod" />
+              <div>
+                <h4 class="cart-prod-name">Name</h4>
+                <p class="cart-prod-code">Code:</p>
+              </div>
+              <p class="cart-prod-price">Price:</p>
+            </article>
+            <button></button>
+          </section>
+        </section>
+      </section>
+      <section class="cart-totals">
+        <div>
+          <h3>Total order:</h3>
+          <h2 id="order-total">0 $</h2>
+        </div>
+      </section>
+    </main>
+    <footer>Footer info</footer>
+    <script src="./js/index.js" type="module"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </body>
+</html>
