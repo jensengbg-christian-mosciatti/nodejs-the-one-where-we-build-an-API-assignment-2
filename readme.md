@@ -1,13 +1,13 @@
-Basic NodeJs App to handle lines in the shopping cart of an e-commerce web site
+Basic Backend(NodeJs+LowDB) and Frontend(HTML+CSS+JS) ecommerce shopping cart handling
 
-Endpoints
+NodeJs Endpoints
 
 -- New Shopping cart
-/api/cart 
-POST 
+/api/cart
+POST
 body: {
-    "newCart" : true
- } 
+"newCart" : true
+}
 
 --Get all products in catalog
 /api/products
@@ -27,8 +27,8 @@ params: cartId
 /api/cart/product
 POST
 body: {
-    "cartId": XXXXXX,
-    "product": XXXXXX
+"cartId": XXXXXX,
+"product": XXXXXX
 }
 
 --Delete product from cart
