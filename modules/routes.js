@@ -102,10 +102,10 @@ module.exports = function(app) {
         status: 200,
         message: "the cart with given ID was not found"
       });
-
     const total = cart.content.reduce((total, item) => {
       return total + item.price * item.qty;
     }, 0);
+    console.log("calc total", total);
 
     cart.cartTotal = total;
     // respondClient(res, { status: 200, data: cart, cartTotal: total });

@@ -9,7 +9,10 @@ export const loadCartList = () => {
   const url = baseUrl + "/api/cart/" + cartId;
   return fetch(url, { method: "GET" })
     .then(res => res.json())
-    .then(data => data)
+    .then(async data => {
+      await stall(700);
+      return data;
+    })
     .catch(error => error);
 };
 
@@ -17,7 +20,10 @@ export const loadProductList = () => {
   const url = baseUrl + "/api/products";
   return fetch(url, { method: "GET" })
     .then(res => res.json())
-    .then(data => data)
+    .then(async data => {
+      await stall(700);
+      return data;
+    })
     .catch(error => error);
 };
 

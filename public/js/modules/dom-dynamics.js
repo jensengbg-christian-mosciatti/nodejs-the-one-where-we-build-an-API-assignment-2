@@ -1,4 +1,4 @@
-import { removeProdFromCart, add2Cart } from "./dom.js";
+import { removeProdFromCart, add2Cart } from "./main.js";
 
 export const dynamicProductCard = (domEl, prod) => {
   const cont = document.createElement("section");

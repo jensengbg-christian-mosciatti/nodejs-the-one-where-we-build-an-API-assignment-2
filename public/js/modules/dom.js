@@ -1,10 +1,5 @@
 import { dynamicProductCard, dynamicCartLine } from "./dom-dynamics.js";
-import {
-  checkItemsInCart,
-  dbAddProd,
-  dbRemoveProdFromCart,
-  loadCartList
-} from "./server-op.js";
+import { loadCartList } from "./server-op.js";
 
 export const displayData = (domEl, data, type) => {
   emptyElement(domEl, false);
@@ -25,9 +20,7 @@ export const displayNoData = (domEl, message) => {
   emptyElement(domEl, false);
 
   const el = document.createElement("p");
-
   el.innerHTML = message ? message : "No data to display";
-
   domEl.append(el);
 };
 
@@ -48,90 +41,26 @@ export const emptyElement = (domEl, loading) => {
   }
 };
 
-export const add2Cart = async event => {
-  let error = { status: false, message: "" };
-  let prod;
-  if (event.target.hasAttribute("prodcode")) {
-    prod = event.target.getAttribute("prodcode");
+export const addRemOverlay = (domEl, add = true) => {
+  // if add=true: add thr overlay
+  // if add=false: remove the overlay (last child, without querySelectors)
+  if (add) {
+    domEl.classList.add("blur");
+    const removingEl = document.createElement("div");
+    removingEl.classList.add("removing");
+    const removingImg = document.createElement("img");
+    removingImg.setAttribute("src", "./images/blocks-1s-58px.gif");
+    removingImg.setAttribute("width", "50px");
+    removingImg.setAttribute("height", "auto");
+    removingImg.setAttribute("style", "display: 'inline-block'");
 
-    if (prod) {
-      //   console.log("prd: ", prod);
-    } else {
-      error.status = true;
-      error.message = "Error: no products attached to the request";
-    }
-  } else {
-    error.status = true;
-    error.message = "Error: product code is required";
-  }
+    const removingTxt = document.createElement("p");
+    removingTxt.innerHTML = "Deleting...";
 
-  if (error.status) {
-    window.swal(error.message);
-    return error;
-  }
-
-  const interval = btnState(event.target, 1);
-  if (await dbAddProd(prod, event.target)) {
-    btnState(event.target, 2, interval);
-    cartBulletDom(1, true);
-  } else btnState(event.target, 3, interval);
+    removingEl.append(removingImg, removingTxt);
+    domEl.append(removingEl);
+  } else domEl.removeChild(domEl.lastElementChild);
 };
-
-export const removeProdFromCart = async event => {
-  let error = { status: false, message: "" };
-
-  let id;
-  if (event.target.hasAttribute("cart-prod-id")) {
-    id = event.target.getAttribute("cart-prod-id");
-
-    if (id) {
-      //   console.log("prd: ", prod);
-    } else {
-      error.status = true;
-      error.message = "Error: no line identifier found in the request";
-    }
-  } else {
-    error.status = true;
-    error.message = "Error: Line identifier required";
-  }
-
-  if (error.status) {
-    window.swal(error.message);
-    return error;
-  }
-
-  const el = document.querySelector(`.cart-line[cart-prod-id='${id}']`);
-  addRemOverlay(el);
-
-  const removedLine = await dbRemoveProdFromCart(id, EventTarget);
-  if (removedLine) el.remove();
-  else el.removeChild(el.lastElementChild);
-
-  const items = await checkItemsInCart();
-  cartBulletDom(items);
-  if (!items) {
-    const domEl = document.querySelector(".cart-content");
-    displayNoData(domEl, "Your cart is empty");
-  }
-  updCartTotal();
-};
-
-function addRemOverlay(domEl) {
-  domEl.classList.add("blur");
-  const removingEl = document.createElement("div");
-  removingEl.classList.add("removing");
-  const removingImg = document.createElement("img");
-  removingImg.setAttribute("src", "./images/blocks-1s-58px.gif");
-  removingImg.setAttribute("width", "50px");
-  removingImg.setAttribute("height", "auto");
-  removingImg.setAttribute("style", "display: 'inline-block'");
-
-  const removingTxt = document.createElement("p");
-  removingTxt.innerHTML = "Deleting...";
-
-  removingEl.append(removingImg, removingTxt);
-  domEl.append(removingEl);
-}
 
 export const updCartTotal = async (total = null) => {
   if (total == null) {
@@ -143,7 +72,7 @@ export const updCartTotal = async (total = null) => {
   document.getElementById("order-total").innerHTML = `${total} $`;
 };
 
-const btnState = (buttonEl, state, interval = false) => {
+export const btnState = (buttonEl, state, interval = false) => {
   //state = 0 --> standard
   //state = 1 --> adding
   //state = 2 --> complete
@@ -184,7 +113,7 @@ const btnState = (buttonEl, state, interval = false) => {
 
       setTimeout(() => {
         buttonEl.disabled = false;
-        btnState(buttonEl, 0);
+        btnState(buttonEl, 4);
       }, 2500);
       break;
     case 4:
